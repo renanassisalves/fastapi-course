@@ -24,7 +24,7 @@ oauth2_schema = OAuth2PasswordBearer(
 
 async def autenticar(email: str, senha: str, db: AsyncSession) -> Optional[UsuarioModel]:
     async with db as session:
-        query = select(UsuarioModel).filter(UsuarioModel.email = email)
+        query = select(UsuarioModel).filter(UsuarioModel.email == email)
         result = await session.execute(query)
         usuario: UsuarioModel = result.scalars().unique().one_or_none()
 
