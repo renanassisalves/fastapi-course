@@ -15,7 +15,7 @@ class UsuarioModel(settings.DBBaseModel):
     eh_admin = Column(Boolean, default=False)
     artigos = relationship(
         "ArtigoModel",
-        cascade="all.delete-orphan",
+        cascade="all,delete-orphan",
         back_populates="criador",
         uselist=True,
         lazy="joined"
